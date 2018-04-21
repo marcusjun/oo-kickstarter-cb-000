@@ -9,7 +9,13 @@ class Backer
 
   def back_project(project)
     @backed_projects<<project
+
+    #Add a backer to the project as long as the
+    #project doesn't already include the backer.
+    #Condition is necessary to avoid infinite loop.
     project.add_backer(self) unless project.backers.include?(self)
+
+    #Below code doesn't work but served as starting point
     #Project.add_backer(self)
   end
 
